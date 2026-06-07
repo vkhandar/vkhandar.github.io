@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vipassana Khandare | Portfolio</title>
+  <meta name="description" content="Vipassana Khandare's portfolio — computer engineering, RTL design, computer architecture, GPU systems, and FPGA projects." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f17;
+      --bg2: #111827;
+      --card: rgba(17, 24, 39, 0.78);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #7c3aed;
+      --accent2: #22c55e;
+      --accent3: #38bdf8;
+      --shadow: 0 20px 60px rgba(0,0,0,0.35);
+      --radius: 24px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(124, 58, 237, 0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(56, 189, 248, 0.14), transparent 22%),
+        radial-gradient(circle at bottom center, rgba(34, 197, 94, 0.08), transparent 22%),
+        linear-gradient(180deg, #070b12 0%, #0b0f17 55%, #0b0f17 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(100% - 32px, var(--max)); margin: 0 auto; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(7, 11, 18, 0.55);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .brand strong {
+      font-size: 1rem;
+      letter-spacing: 0.01em;
+    }
+    .brand span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .hero {
+      padding: 72px 0 40px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .hero-main {
+      padding: 34px;
+      position: relative;
+      isolation: isolate;
+    }
+    .hero-main::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(56,189,248,0.06), transparent 65%);
+      z-index: -1;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 999px;
+      color: #cbd5e1;
+      background: rgba(255,255,255,0.03);
+      font-size: 0.92rem;
+      margin-bottom: 22px;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent3));
+      box-shadow: 0 0 20px rgba(124,58,237,0.55);
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2.6rem, 6vw, 4.9rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+    }
+    .subtitle {
+      margin: 18px 0 0;
+      font-size: clamp(1.02rem, 2vw, 1.18rem);
+      color: #d1d5db;
+      max-width: 62ch;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 18px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #4f46e5);
+      color: white;
+    }
+    .btn-secondary {
+      border-color: rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 16px;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      padding: 18px;
+    }
+    .stat {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .stat strong {
+      display: block;
+      font-size: 1.45rem;
+      margin-bottom: 4px;
+    }
+    .stat span { color: var(--muted); font-size: 0.92rem; }
+    .contact-card {
+      padding: 22px;
+    }
+    .contact-card h2 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+    }
+    .contact-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .contact-list a:hover { color: var(--text); }
+
+    section { padding: 20px 0; }
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin: 36px 0 18px;
+    }
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      letter-spacing: -0.03em;
+    }
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 60ch;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.14rem;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 0.93rem;
+      margin-bottom: 14px;
+    }
+    .card p { margin: 0; color: #d1d5db; }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .tag {
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      color: #cbd5e1;
+      font-size: 0.84rem;
+    }
+    .list {
+      display: grid;
+      gap: 12px;
+    }
+    .list-item {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.03);
+    }
+    .list-item strong { display: block; margin-bottom: 4px; }
+    .list-item span { color: var(--muted); font-size: 0.94rem; }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 18px;
+      padding: 20px 22px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .timeline-item time {
+      color: #cbd5e1;
+      font-size: 0.94rem;
+    }
+    .timeline-item h3 { margin: 0 0 4px; }
+    .timeline-item .org { color: var(--muted); margin-bottom: 8px; }
+
+    .footer {
+      padding: 44px 0 64px;
+      color: var(--muted);
+      text-align: center;
+    }
+    .footer strong { color: var(--text); }
+
+    @media (max-width: 920px) {
+      .hero-grid, .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; }
+      .nav-inner { flex-direction: column; align-items: flex-start; padding: 14px 0; }
+      .nav-links { justify-content: flex-start; gap: 14px; }
+      .hero { padding-top: 36px; }
+    }
+
+    @media (max-width: 560px) {
+      .hero-main, .card, .contact-card { padding: 20px; }
+      .stats { grid-template-columns: 1fr; }
+      h1 { font-size: clamp(2.2rem, 14vw, 4rem); }
+      .section-head { align-items: start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <strong>Vipassana Khandare</strong>
+        <span>Computer Engineering · RTL Design · GPU Systems</span>
+      </div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="panel hero-main">
+          <div class="eyebrow"><span class="dot"></span> Available for internships, research, and hardware/software roles</div>
+          <h1>Building processors, GPUs, and RTL tools.</h1>
+          <p class="subtitle">
+            I am a Computer Engineering graduate student at the University of Southern California focused on computer architecture,
+            FPGA design, ASIC development, and hardware-software co-design. I build systems that turn low-level logic into real performance.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:vkhandar@usc.edu">Email Me</a>
+            <a class="btn btn-secondary" href="https://github.com/vkhandar" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <div class="panel stats">
+            <div class="stat">
+              <strong>3.7</strong>
+              <span>USC M.S. GPA</span>
+            </div>
+            <div class="stat">
+              <strong>3.9</strong>
+              <span>UB Honors GPA</span>
+            </div>
+            <div class="stat">
+              <strong>500+</strong>
+              <span>Students taught</span>
+            </div>
+            <div class="stat">
+              <strong>6+</strong>
+              <span>Major hardware projects</span>
+            </div>
+          </div>
+          <div class="panel contact-card">
+            <h2>Quick Info</h2>
+            <div class="contact-list">
+              <div>📍 Los Angeles, CA</div>
+              <div>🎓 USC · M.S. Computer Engineering</div>
+              <div>🧠 Focus: RTL, FPGA, GPU, Architecture</div>
+              <a href="mailto:vkhandar@usc.edu">✉️ vkhandar@usc.edu</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <h2>About</h2>
+          <p>I like working on systems where performance, correctness, and architecture all matter at once.</p>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h3>What I do</h3>
+            <p>
+              I design and verify hardware systems across the stack: processors, memory subsystems, custom instruction sets,
+              GPU pipelines, and RTL automation frameworks. I enjoy turning ideas into working silicon-ready designs.
+            </p>
+          </div>
+          <div class="card">
+            <h3>What I care about</h3>
+            <p>
+              Clean architecture, reproducible verification, efficient execution, and strong tooling. I am especially interested
+              in CPU/GPU design, FPGA prototyping, ASIC workflows, and hardware acceleration for AI and high-performance computing.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <h2>Featured Projects</h2>
+          <p>A few projects that show my work in computer architecture, Verilog, CUDA, and RTL automation.</p>
+        </div>
+        <div class="grid-2">
+          <article class="card">
+            <h3>Multithreaded Pipelined ARM-Compatible Processor on NetFPGA</h3>
+            <div class="meta">Verilog · NetFPGA · FPGA Design</div>
+            <p>
+              Designed a 32-bit synchronous ALU, multi-port register file, BRAM-based instruction/data memory, and a custom
+              instruction format to validate a multithreaded five-stage pipeline on NetFPGA.
+            </p>
+            <div class="tags">
+              <span class="tag">Verilog</span>
+              <span class="tag">FPGA</span>
+              <span class="tag">Pipeline Design</span>
+              <span class="tag">Computer Architecture</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Custom 8-bit Microcontroller Design & Verification</h3>
+            <div class="meta">Verilog · SystemVerilog · Verification</div>
+            <p>
+              Built a Flash-based 8-bit microcontroller with ALU, control unit, register file, and memory subsystems, then created
+              testbenches to verify edge cases and instruction execution.
+            </p>
+            <div class="tags">
+              <span class="tag">SystemVerilog</span>
+              <span class="tag">Testbenches</span>
+              <span class="tag">Microcontroller</span>
+              <span class="tag">ISA Design</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Custom GPU Architecture & CUDA-to-Hardware Compilation Pipeline</h3>
+            <div class="meta">CUDA · Python · GPU Architecture</div>
+            <p>
+              Architected a GPU datapath with SIMD execution, tensor-style operations, and a compilation pipeline that translates
+              CUDA kernels into hardware-executable instructions.
+            </p>
+            <div class="tags">
+              <span class="tag">CUDA</span>
+              <span class="tag">SIMD</span>
+              <span class="tag">Compiler Pipeline</span>
+              <span class="tag">GPU Design</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>RTL Clock & Reset Network Analysis Framework</h3>
+            <div class="meta">C++ · Python · Verilog · ASIC Automation</div>
+            <p>
+              Developed a graph-based framework that parses Verilog RTL, constructs clock-domain and reset-network dependency
+              graphs, and automates synchronization and reset-generation logic.
+            </p>
+            <div class="tags">
+              <span class="tag">C++</span>
+              <span class="tag">RTL Analysis</span>
+              <span class="tag">ASIC Flow</span>
+              <span class="tag">Automation</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head">
+          <h2>Experience</h2>
+          <p>Teaching, research, and system-level problem solving.</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <time>Aug 2023 – May 2025</time>
+            <div>
+              <h3>Teaching Assistant</h3>
+              <div class="org">University at Buffalo</div>
+              <p>
+                Led study sessions for 500+ students in Computer Science, Data Structures, Algorithms, and Complexity.
+                Taught debugging, testing, and clean-code practices in Verilog, C/C++, and Python.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <time>May 2024 – May 2025</time>
+            <div>
+              <h3>Undergraduate Research Assistant</h3>
+              <div class="org">University at Buffalo</div>
+              <p>
+                Developed an embedded microcontroller-based system using ATiny44, MPU6050, and OLED display hardware.
+                Worked on system debugging, validation, performance analysis, and anomaly detection workflows.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head">
+          <h2>Skills</h2>
+          <p>Languages, hardware platforms, and tools I use regularly.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <h3>RTL & Hardware</h3>
+            <p>Verilog, SystemVerilog, RTL Design, Computer Architecture, Processor Design, ASIC Development</p>
+          </div>
+          <div class="card">
+            <h3>Programming</h3>
+            <p>C++, Python, CUDA, C, Perl, Java, SQL, Bash, MATLAB, SystemC, TCL</p>
+          </div>
+          <div class="card">
+            <h3>Tools & Platforms</h3>
+            <p>NetFPGA, QuestaSim, Siemens EDA Tools, Gem5, Git, Linux, UNIX, AWS, Arduino IDE</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <h2>Contact</h2>
+          <p>Open to hardware, systems, and architecture opportunities.</p>
+        </div>
+        <div class="card">
+          <p style="margin-top:0">
+            The best way to reach me is by email. I am always open to discussing computer architecture, RTL design, FPGA work,
+            GPU systems, and research or internship opportunities.
+          </p>
+          <div class="hero-actions" style="margin-top:18px">
+            <a class="btn btn-primary" href="mailto:vkhandar@usc.edu">vkhandar@usc.edu</a>
+            <a class="btn btn-secondary" href="https://github.com/vkhandar" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <strong>Vipassana Khandare</strong><br />
+      Built for GitHub Pages.
+    </div>
+  </footer>
+</body>
+</html>
