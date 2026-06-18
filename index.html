@@ -13,16 +13,16 @@
       --bg: #fafafa;
       --bg2: #ffffff;
       --card: #ffffff;
-      --card-border: #e5e7eb;
+      --card-border: #d1d5db;
     
-      --text: #111827;
-      --muted: #6b7280;
+      --text: #111111;
+      --muted: #374151;
     
       --accent: #2563eb;
       --accent2: #059669;
       --accent3: #0891b2;
     
-      --shadow: 0 8px 30px rgba(0,0,0,0.06);
+      --shadow: 0 10px 30px rgba(0,0,0,0.06);
       --radius: 24px;
       --max: 1120px;
     }
@@ -71,7 +71,9 @@
       letter-spacing: 0.01em;
     }
     .brand span {
-      color: var(--muted);
+      /* color: var(--muted); */
+      color: #1f2937;
+      font-weight: 500;
       font-size: 0.9rem;
     }
     .nav-links {
@@ -82,7 +84,8 @@
       justify-content: flex-end;
     }
     .nav-links a {
-      color: var(--muted);
+      color: #111111;
+      font-weight: 500;
       font-size: 0.95rem;
     }
     .nav-links a:hover { color: var(--text); }
@@ -139,11 +142,14 @@
       font-size: clamp(2.6rem, 6vw, 4.9rem);
       line-height: 0.95;
       letter-spacing: -0.05em;
+      font-weight: 800;
+      color: #000000;
     }
     .subtitle {
       margin: 18px 0 0;
       font-size: clamp(1.02rem, 2vw, 1.18rem);
-      color: #d1d5db;
+      color: #1f2937;
+      font-weight: 500;
       max-width: 62ch;
     }
     .hero-actions {
@@ -227,7 +233,8 @@
     }
     .section-head p {
       margin: 0;
-      color: var(--muted);
+      color: #1f2937;
+      font-weight: 500;
       max-width: 60ch;
     }
 
@@ -257,7 +264,7 @@
       font-size: 0.93rem;
       margin-bottom: 14px;
     }
-    .card p { margin: 0; color: #d1d5db; }
+    .card p { margin: 0; color: #111827; }
     .tags {
       display: flex;
       flex-wrap: wrap;
@@ -269,7 +276,8 @@
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,0.08);
       background: rgba(255,255,255,0.03);
-      color: #cbd5e1;
+      color: #111111;
+      font-weight: 500;
       font-size: 0.84rem;
     }
     .list {
